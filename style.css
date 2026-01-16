@@ -229,4 +229,26 @@ p{line-height:1.5}
 .tag{
   font-size:12px;
   color: var(--muted);
-  p
+  padding: 6px 10px;
+  border-radius: 999px;
+  border:1px solid var(--border);
+  background: rgba(0,0,0,.14);
+}
+
+.history{display:grid; gap:10px; margin-top: 10px}
+.history-item{
+  padding: 14px;
+  border-radius: 18px;
+  border:1px solid var(--border);
+  background: rgba(0,0,0,.10);
+}
+.history-item strong{display:block; margin-bottom: 6px}
+
+.footer{
+  padding: 18px 16px;
+  text-align: center;
+  border-top: 1px solid var(--border);
+  color: var(--muted);
+  font-size: 10px;   /* 👈 DIMINUI O TAMANHO DA LETRA */
+}
+
