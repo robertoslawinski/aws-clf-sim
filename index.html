@@ -1,0 +1,205 @@
+<!doctype html>
+<html lang="pt">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>AWS CLF-C02 — Simulados</title>
+    <link rel="stylesheet" href="./style.css" />
+  </head>
+  <body>
+    <header class="topbar">
+      <div class="brand">
+        <div class="logo">☁️</div>
+        <div>
+          <div class="title">AWS CLF-C02</div>
+          <div class="subtitle">Simulados (MVP em JavaScript)</div>
+        </div>
+      </div>
+
+      <div class="top-actions">
+        <button id="btnGoHome" class="btn btn-ghost">Home</button>
+        <button id="btnViewHistory" class="btn btn-ghost">Histórico</button>
+      </div>
+    </header>
+
+    <main class="container">
+      <!-- HOME -->
+      <section id="viewHome" class="card">
+        <h1>Crie um simulado</h1>
+        <p class="muted">
+          Escolha quantas questões quer, se quer tempo (modo exame) e quais domínios incluir.
+        </p>
+
+        <div class="grid">
+          <div class="field">
+            <label for="numQuestions">Nº de questões</label>
+            <select id="numQuestions">
+              <option value="10">10 (rápido)</option>
+              <option value="20" selected>20 (MVP)</option>
+              <option value="65">65 (formato exame)</option>
+            </select>
+          </div>
+
+          <div class="field">
+            <label for="mode">Modo</label>
+            <select id="mode">
+              <option value="exam" selected>Exame (com tempo)</option>
+              <option value="practice">Treino (sem tempo)</option>
+            </select>
+          </div>
+
+          <div class="field">
+            <label for="minutes">Tempo (minutos)</label>
+            <input id="minutes" type="number" min="5" step="5" value="90" />
+            <small class="hint">CLF-C02: 90 min (aprox.).</small>
+          </div>
+        </div>
+
+        <div class="domains">
+          <h3>Domínios</h3>
+          <div class="checkboxes">
+            <label><input type="checkbox" class="domain" value="Cloud Concepts" checked /> Cloud Concepts</label>
+            <label><input type="checkbox" class="domain" value="Security" checked /> Security</label>
+            <label><input type="checkbox" class="domain" value="Technology" checked /> Technology</label>
+            <label><input type="checkbox" class="domain" value="Billing & Pricing" checked /> Billing & Pricing</label>
+          </div>
+        </div>
+
+        <div class="row">
+          <button id="btnStart" class="btn btn-primary">Começar simulado</button>
+          <button id="btnSeed" class="btn btn-ghost">Reset / Carregar questões exemplo</button>
+        </div>
+
+        <hr class="sep" />
+
+        <div class="note">
+          <strong>Nota:</strong> as questões abaixo são <u>autoriais de exemplo</u> (não são dumps).
+          Você pode aumentar o banco no <code>questions.js</code>.
+        </div>
+
+        <!-- NOVO: crédito na página principal -->
+        <div class="credit">
+          Criado por <strong>Roberto Slawinski</strong>
+        </div>
+      </section>
+
+      <!-- EXAM -->
+      <section id="viewExam" class="card hidden">
+        <div class="exam-top">
+          <div>
+            <div class="pill" id="pillMode">Modo: Exame</div>
+            <div class="meta" id="examMeta">Questão 1 de 20</div>
+          </div>
+
+          <div class="timer-wrap">
+            <div class="timer-label">Tempo</div>
+            <div class="timer" id="timer">--:--</div>
+          </div>
+        </div>
+
+        <hr class="sep" />
+
+        <div class="q-head">
+          <div class="q-domain" id="qDomain">Security</div>
+          <h2 class="q-title" id="qText">Pergunta aqui…</h2>
+          <div class="muted" id="qMultiHint"></div>
+        </div>
+
+        <div id="options" class="options"></div>
+
+        <div class="nav">
+          <button id="btnPrev" class="btn btn-ghost">◀ Anterior</button>
+          <div class="nav-center">
+            <button id="btnFlag" class="btn btn-ghost">🚩 Marcar</button>
+            <button id="btnClear" class="btn btn-ghost">Limpar</button>
+          </div>
+          <button id="btnNext" class="btn btn-ghost">Próxima ▶</button>
+        </div>
+
+        <div class="row space-between">
+          <button id="btnFinish" class="btn btn-primary">Finalizar</button>
+          <div class="muted" id="progress">Respondidas: 0 / 20</div>
+        </div>
+      </section>
+
+      <!-- RESULT -->
+      <section id="viewResult" class="card hidden">
+        <h1>Resultado</h1>
+        <div class="score">
+          <div class="score-main" id="scoreMain">0%</div>
+          <div class="score-sub" id="scoreSub">0/0</div>
+        </div>
+
+        <div class="grid">
+          <div class="stat">
+            <div class="stat-label">Acertos</div>
+            <div class="stat-value" id="statCorrect">0</div>
+          </div>
+          <div class="stat">
+            <div class="stat-label">Erros</div>
+            <div class="stat-value" id="statWrong">0</div>
+          </div>
+          <div class="stat">
+            <div class="stat-label">Sem resposta</div>
+            <div class="stat-value" id="statBlank">0</div>
+          </div>
+        </div>
+
+        <div class="row">
+          <button id="btnReview" class="btn btn-primary">Rever questões</button>
+          <button id="btnNewExam" class="btn btn-ghost">Novo simulado</button>
+        </div>
+      </section>
+
+      <!-- REVIEW -->
+      <section id="viewReview" class="card hidden">
+        <div class="row space-between">
+          <h1>Revisão</h1>
+          <div class="muted" id="reviewMeta">Questão 1/20</div>
+        </div>
+
+        <div class="review-card">
+          <div class="q-domain" id="rDomain"></div>
+          <h2 class="q-title" id="rText"></h2>
+          <div id="rOptions" class="options"></div>
+
+          <div class="explain">
+            <div class="explain-title">Explicação</div>
+            <div id="rExplanation" class="explain-body"></div>
+            <div class="tags" id="rTags"></div>
+          </div>
+        </div>
+
+        <div class="nav">
+          <button id="btnRPrev" class="btn btn-ghost">◀ Anterior</button>
+          <button id="btnRNext" class="btn btn-ghost">Próxima ▶</button>
+        </div>
+
+        <div class="row">
+          <button id="btnBackHome" class="btn btn-primary">Voltar ao início</button>
+        </div>
+      </section>
+
+      <!-- HISTORY -->
+      <section id="viewHistory" class="card hidden">
+        <div class="row space-between">
+          <h1>Histórico</h1>
+          <button id="btnClearHistory" class="btn btn-ghost">Limpar histórico</button>
+        </div>
+
+        <div id="historyList" class="history"></div>
+
+        <div class="row">
+          <button id="btnHistoryBack" class="btn btn-primary">Voltar</button>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <span class="muted">MVP em JS • Você pode publicar no GitHub Pages depois.</span>
+    </footer>
+
+    <script src="./questions.js"></script>
+    <script src="./app.js"></script>
+  </body>
+</html>
