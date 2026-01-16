@@ -2333,6 +2333,319 @@ window.QUESTION_BANK = [
   explanation: "S3 Intelligent-Tiering automatically moves objects between access tiers based on usage patterns."
 },
 
+/* =======================
+   Imported set (q201–q220)
+   Source: user-provided Q/A
+   Paste INSIDE window.QUESTION_BANK array
+======================= */
+
+{
+  id: "q201",
+  domain: "Billing & Pricing",
+  tags: ["EC2", "Reserved Instances"],
+  type: "single",
+  question: "A company plans to use reserved instances to get discounted pricing for Amazon EC2 instances. The company may need to change the EC2 instance type during the one year period. Which instance purchasing option is the MOST cost-effective?",
+  options: [
+    "Regional Reserved Instances",
+    "Zonal Reserved Instances",
+    "Convertible Reserved Instances",
+    "Standard Reserved Instances"
+  ],
+  correct: [2],
+  explanation: "Convertible RIs provide discounts and allow changes to instance family/type during the term (more flexibility than Standard RIs)."
+},
+{
+  id: "q202",
+  domain: "Billing & Pricing",
+  tags: ["Reserved Instances"],
+  type: "multi",
+  question: "What are the benefits of using reserved instances? (Select TWO.)",
+  options: [
+    "Uses dedicated hardware",
+    "High availability",
+    "More flexibility",
+    "Reserve capacity",
+    "Reduced cost"
+  ],
+  correct: [3, 4],
+  explanation: "Reserved Instances can reduce cost compared to On-Demand and can reserve capacity (especially in a specific AZ when applicable)."
+},
+{
+  id: "q203",
+  domain: "Security",
+  tags: ["DDoS", "Shield"],
+  type: "single",
+  question: "What AWS service offers managed DDoS protection?",
+  options: [
+    "AWS Shield",
+    "AWS Firewall Manager",
+    "Amazon GuardDuty",
+    "Amazon Inspector"
+  ],
+  correct: [0],
+  explanation: "AWS Shield provides DDoS protection (Standard included; Advanced offers enhanced protections and support)."
+},
+{
+  id: "q204",
+  domain: "Technology",
+  tags: ["RDS", "Managed Services"],
+  type: "multi",
+  question: "Which benefits can a company gain by deploying a relational database on Amazon RDS instead of Amazon EC2? (Select TWO.)",
+  options: [
+    "Indexing of tables",
+    "Software patching",
+    "Automated backups",
+    "Schema management",
+    "Root access to OS"
+  ],
+  correct: [1, 2],
+  explanation: "RDS is managed: AWS handles database engine patching (depending on settings) and supports automated backups."
+},
+{
+  id: "q205",
+  domain: "Security",
+  tags: ["Shared Responsibility", "EC2"],
+  type: "single",
+  question: "Customers using AWS services must patch operating systems on which of the following services?",
+  options: [
+    "Amazon EC2",
+    "Amazon DynamoDB",
+    "AWS Lambda",
+    "AWS Fargate"
+  ],
+  correct: [0],
+  explanation: "With EC2, the customer manages the guest OS, including patching and hardening."
+},
+{
+  id: "q206",
+  domain: "Technology",
+  tags: ["Managed Services", "RDS"],
+  type: "multi",
+  question: "When running applications in the AWS Cloud, which common tasks can AWS manage on behalf of customers? (Select TWO.)",
+  options: [
+    "Application source code auditing",
+    "Creating a database schema",
+    "Taking a backup of a database",
+    "Patching database software",
+    "Application security testing"
+  ],
+  correct: [2, 3],
+  explanation: "For managed database services, AWS can handle backups and patching, reducing operational overhead."
+},
+{
+  id: "q207",
+  domain: "Billing & Pricing",
+  tags: ["EC2", "Capacity", "Savings Plans"],
+  type: "single",
+  question: "A company has a mission-critical Linux application that must run every Monday from 6 AM to 10 PM and cannot be interrupted. Which EC2 purchasing option is MOST cost-effective?",
+  options: [
+    "Spot Instances",
+    "On-Demand Capacity Reservation with Savings Plan",
+    "Dedicated Hosts",
+    "Regional Reserved Instances"
+  ],
+  correct: [1],
+  explanation: "Capacity Reservations help ensure capacity availability, while Savings Plans can reduce compute costs for predictable usage."
+},
+{
+  id: "q208",
+  domain: "Billing & Pricing",
+  tags: ["Cost Estimation"],
+  type: "single",
+  question: "Which tool should be used to estimate the cost of a new AWS workload?",
+  options: [
+    "Cost Explorer",
+    "AWS Pricing Calculator",
+    "AWS Cost and Usage Report",
+    "Billing Dashboard"
+  ],
+  correct: [1],
+  explanation: "AWS Pricing Calculator is designed to estimate costs before deploying resources."
+},
+{
+  id: "q209",
+  domain: "Technology",
+  tags: ["Global", "Latency", "CloudFront", "Global Accelerator"],
+  type: "multi",
+  question: "A company deploys a web app in one region but serves global users. Which services help reduce latency? (Select TWO.)",
+  options: [
+    "AWS Global Accelerator",
+    "Amazon CloudFront",
+    "AWS Snowcone",
+    "AWS Direct Connect",
+    "AWS Transit Gateway"
+  ],
+  correct: [0, 1],
+  explanation: "CloudFront caches content at edge locations; Global Accelerator improves routing over AWS’s global network to healthy endpoints."
+},
+{
+  id: "q210",
+  domain: "Security",
+  tags: ["Shared Responsibility", "EC2"],
+  type: "single",
+  question: "According to the AWS shared responsibility model, which is AWS’s responsibility?",
+  options: [
+    "Configuring network ACLs",
+    "Updating security group rules",
+    "Patching software on EC2",
+    "Updating firmware on underlying EC2 hosts"
+  ],
+  correct: [3],
+  explanation: "AWS is responsible for the security 'of' the cloud, including underlying host infrastructure and firmware."
+},
+{
+  id: "q211",
+  domain: "Technology",
+  tags: ["CloudFront", "CDN"],
+  type: "single",
+  question: "A website has a global customer base and poor performance. Which service reduces latency?",
+  options: [
+    "Amazon CloudFront",
+    "Amazon EC2 Auto Scaling",
+    "Amazon Direct Connect",
+    "Amazon ElastiCache"
+  ],
+  correct: [0],
+  explanation: "CloudFront is a CDN that caches content closer to users to reduce latency."
+},
+{
+  id: "q212",
+  domain: "Technology",
+  tags: ["Auto Scaling", "Load Balancing", "High Availability"],
+  type: "single",
+  question: "A website has highly variable traffic and must be highly available. What is MOST cost-effective?",
+  options: [
+    "Dedicated host",
+    "Manual EC2 scaling",
+    "EC2 Auto Scaling group + Elastic Load Balancer",
+    "Max-sized EC2 instance"
+  ],
+  correct: [2],
+  explanation: "Auto Scaling adjusts capacity with demand and ELB distributes traffic, improving availability and cost efficiency."
+},
+{
+  id: "q213",
+  domain: "Security",
+  tags: ["S3", "Bucket Policy"],
+  type: "single",
+  question: "Which S3 bucket policy element defines who gets access?",
+  options: [
+    "Principal",
+    "Condition",
+    "Action",
+    "Resource"
+  ],
+  correct: [0],
+  explanation: "The Principal element specifies the user, account, service, or other entity allowed/denied access."
+},
+{
+  id: "q214",
+  domain: "Technology",
+  tags: ["S3", "Storage"],
+  type: "single",
+  question: "How much data can be stored in Amazon S3?",
+  options: [
+    "100 PB",
+    "1 PB",
+    "Virtually unlimited",
+    "100 TB"
+  ],
+  correct: [2],
+  explanation: "S3 is designed for massive scale; you can store virtually unlimited objects."
+},
+{
+  id: "q215",
+  domain: "Cloud Concepts",
+  tags: ["Agility"],
+  type: "multi",
+  question: "Which best describes agility in AWS? (Select TWO.)",
+  options: [
+    "Speed of resource creation",
+    "Speed of feature rollout",
+    "Ability to experiment quickly",
+    "Automatic scaling",
+    "Elimination of wasted capacity"
+  ],
+  correct: [0, 2],
+  explanation: "Agility is about moving fast: provisioning resources quickly and experimenting rapidly."
+},
+{
+  id: "q216",
+  domain: "Security",
+  tags: ["DDoS", "Network Protection"],
+  type: "single",
+  question: "What is one method of protecting against DDoS attacks?",
+  options: [
+    "CloudWatch monitoring",
+    "Configure firewall in front of resources",
+    "CloudTrail logging",
+    "AWS Health Dashboard"
+  ],
+  correct: [1],
+  explanation: "Layered protection (e.g., WAF/firewalling + Shield) can help mitigate DDoS and malicious traffic patterns."
+},
+{
+  id: "q217",
+  domain: "Cloud Concepts",
+  tags: ["Economies of Scale"],
+  type: "single",
+  question: "AWS can reduce prices continually due to:",
+  options: [
+    "Compute Savings Plans",
+    "Economies of scale",
+    "Elastic compute",
+    "Pay-as-you-go"
+  ],
+  correct: [1],
+  explanation: "Economies of scale allow AWS to operate at massive volume and pass savings on to customers over time."
+},
+{
+  id: "q218",
+  domain: "Security",
+  tags: ["IAM", "Best Practices"],
+  type: "single",
+  question: "What is a best practice for IAM access keys?",
+  options: [
+    "Rotate access keys regularly",
+    "No need to manage",
+    "Never use access keys",
+    "AWS rotates them"
+  ],
+  correct: [0],
+  explanation: "Access keys should be rotated and protected; prefer roles/temporary credentials whenever possible."
+},
+{
+  id: "q219",
+  domain: "Security",
+  tags: ["IAM", "Access Keys"],
+  type: "single",
+  question: "Which IAM entity is associated with access keys?",
+  options: [
+    "IAM Policy",
+    "IAM Role",
+    "IAM User",
+    "IAM Group"
+  ],
+  correct: [2],
+  explanation: "Access keys are created for IAM users (roles use temporary credentials via STS)."
+},
+{
+  id: "q220",
+  domain: "Technology",
+  tags: ["Edge Locations", "CloudFront", "Shield"],
+  type: "multi",
+  question: "Which services are associated with Edge Locations? (Select TWO.)",
+  options: [
+    "AWS Config",
+    "Amazon EBS",
+    "CloudFront",
+    "AWS Shield",
+    "AWS Direct Connect"
+  ],
+  correct: [2, 3],
+  explanation: "CloudFront uses edge locations for caching, and services like Shield integrate with edge/perimeter protections for internet-facing apps."
+},
+
 
 ];
 
