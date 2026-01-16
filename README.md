@@ -1,13 +1,3 @@
-Perfeito. Abaixo está **TUDO pronto para copiar e colar**, já com:
-
-* ✅ **Badges** (GitHub Pages, JavaScript, AWS)
-* ✅ Linguagem **recrutador-friendly**
-* ✅ Estrutura clara de **portfolio**
-* ✅ **Descrição pronta para LinkedIn** (no final)
-
-Você pode **colar diretamente no GitHub** ao criar/editar o `README.md`.
-
----
 
 # ☁️ AWS CLF-C02 Practice Simulator
 
